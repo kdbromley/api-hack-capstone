@@ -4,12 +4,113 @@
  <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">   <!-- viewport for mobile first, control page scaling when rendering -->
-	<title>API HACK CAPSTONE</title>
+	<title>API HACK CAPSTONE</title>    <!-- placeholder title  -->
+	<!-- <link rel="icon" href="icon.ico">   website icon placeholder --> 
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" /> <!-- nomalize css -->
 	<link href="style.css" rel="stylesheet" type="text/css" />
  </head>
 
  <body>
+	 <header>
+		 <h1>RECIPE AND DRINK SEARCH APP</h1>  <!-- placeholder, better name otw! -->
+	 </header>
+
+	 <main>
+		 <section class="welcome">
+		 <h2>What should I do for dinner tonight?</h2>
+		 <p>Answer with a click.</p>
+		 <div class="hidden">  <!-- design containers to be filled during styling-->
+			 <img href="" alt="placeholder">
+		 </div>
+		 <div class="hidden">
+			 <img href="" alt="placeholder">
+		 </div>
+		 <div class="hidden">
+			 <img href="" alt="placeholder">
+		 </div>
+		 </section>
+
+
+		 <form class="js-drink=form">
+			 <fieldset class="bev-options">
+				 <legend>Wine or cocktail?</legend>
+				 <input type="radio" id="wine" name="drink"><label for="wine">Wine</label>
+				 <input type="radio" id="cocktail" name="drink"><label for="cocktail">Cocktail</label>
+				 <input type="radio" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
+			 </fieldset>
+		 </form>
+		 <form>
+			<fieldset class="recipe-options">
+			    <label for="query">What are you feeling?</label>
+				 <input type="text" id="query" placeholder="i.e. pasta, cheesecake, rice pilaf" required>
+				 <label for="diet">Dietary restrictions?</label>
+				 <select id="diet" name="diet">
+					 <option value=" "></option>
+					 <option value="vegetarian">Vegetarian</option>
+					 <option value="pescetarian">Pescetarian</option>
+					 <option value="vegan">Vegan</option>
+					 <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+					 <option value="ovo-vegetarian">Ovo-vegetarian</option>
+				 </select>
+				 <fieldset class="intolerances-list">
+					 <legend>Any intolerances?</legend>
+					 <input type="checkbox" namevalue="egg"><label>Egg</label>
+					 <input type="checkbox" value="gluten"><label>Gluten</label>
+					 <input type="checkbox" value="dairy"><label>Dairy</label>
+					 <input type="checkbox" value="peanut"><label for="">Peanut</label>
+					 <input type="checkbox" value="seafood"><label for="">Seafood</label>
+					 <input type="checkbox" value="shellfish"><label for="">Shellfish</label>
+					 <input type="checkbox" value="soy"><label for="">Soy</label>
+					 <input type="checkbox" value="tree nut"><label for="">Tree nut</label>
+					 <input type="checkbox" value="wheat"><label for="">Wheat</label>
+				 </fieldset>
+				 <label for="cuisine">Got a cuisine in mind?</label>
+				 <select id="cuisine" name="cuisine">
+					 <option value=" "></option>
+					 <option value="african">African</option>
+					 <option value="italian">Italian</option>
+					 <option value="french">French</option>
+					 <option value="chinese">Chinese</option>
+					 <option value="japanese">Japanese</option>
+					 <option value="korean">Korean</option>
+					 <option value="vietnamese">Vietnamese</option>
+					 <option value="thai">Thai</option>
+					 <option value="indian">Indian</option>
+					 <option value="british">British</option>
+					 <option value="irish">Irish</option>
+					 <option value="mexican">Mexican</option>
+					 <option value="spanish">Spanish</option>
+					 <option value="middle eastern">Middle Eastern</option>
+					 <option value="jewish">Jewish</option>
+					 <option value="american">American</option>
+					 <option value="cajun">Cajun</option>
+					 <option value="southern">Southern</option>
+					 <option value="greek">Greek</option>
+					 <option value="german">German</option>
+					 <option value="nordic">Nordic</option>
+					 <option value="eastern european">Eastern European</option>
+					 <option value="caribbean">Caribbean</option>
+					 <option value="latin american">Latin American</option>
+				 </select>
+				 <label>Number of Results:</label>
+				 <input type="number" size="5" placeholder="10" min="1" max="100">
+			 </fieldset>
+			 <button type="submit">Search!</button>
+		 </form>
+		 
+
+		 <section class="results js-results hidden">
+			 <h3>Search results</h3>
+			 <ol>
+				 <li>Example</li>
+			 </ol>
+
+		 </section>
+	 
+		
+		
+		
+	</main>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
