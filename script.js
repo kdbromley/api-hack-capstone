@@ -107,7 +107,7 @@ const recipeEndpoint = 'recipes/search?'
 const wineEndpoint = 'food/wine/pairing?'
 
 
-/* function displayDrinkOptions() {
+function displayDrinkOptions() {
     return `<fieldset class="bev-options">
                    <legend>Wine or cocktail?</legend>
                    <button type="radio" id="wine" name="drink"><label for="wine">Wine</label>
@@ -115,7 +115,6 @@ const wineEndpoint = 'food/wine/pairing?'
                    <button type="radio" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
               </fieldset>`
   }
-*/
 
 
 /* function watchRecipeList() {
@@ -130,17 +129,18 @@ const wineEndpoint = 'food/wine/pairing?'
     })
 } */
 
- function displayRecipeResults(responseJson) {
+function displayRecipeResults(responseJson) {
     console.log(responseJson);
     $('.js-error-message').text('');
     $('.js-recipe-list').empty();
     for (let i = 0; i < responseJson.results.length; i++) {
-        $('.results-list').append(`
+        $('.js-recipe-list').append(`
         <li><h4><a href=${responseJson.results[i].url}>${responseJson.results[i].title}</a></h4>
-        <img href="https://spoonacular.com/recipeImages/${responseJson.results[i].id}-{SIZE}.{TYPE}" alt="${responseJson.results[i].title}">  
-        <p>Ready in:${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings</p>
+        <img href="${responseJson.results[i].image}" alt="${responseJson.results[i].title}">
+        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings</p>
         <p>Source recipe:<a href=${responseJson.results[i].sourceUrl}>${responseJson.results[i].sourceUrl}</a></p>
-        </li>`)
+        ${displayDrinkOptions()}
+       </li>`)
     }
     $('.js-results').removeClass('hidden');
 }
