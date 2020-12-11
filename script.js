@@ -89,6 +89,7 @@ function formatQueryParams(params) {
 function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput=10) {
     const recipeParams = {
         query: recipeQuery,
+        intolerances: intoleranceInput,
         diet: dietInput,
         number: numberInput
     }
@@ -110,8 +111,6 @@ function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput=10)
     .then(responseJson => displayRecipeResults(responseJson))
     .catch(err => { alert(`Uh oh! An error occured: ${err.message}`);
         });
-
-        displayRecipeResults(responseJson);
 }
 
 
@@ -119,14 +118,14 @@ function handleFormSubmit() {
     $('.js-form').submit(event => {
         event.preventDefault();
         const recipeQuery = $('input#recipe-query').val();
-        let intolerances = []
+        let intoleranceInput = []
         $('input[name="intolerance"]:checked').each(function() {
-          intolerances.push(this.value);
+          intoleranceInput.push(this.value);
         });
-        intolerances = intolerances.join(', ');
+        intoleranceInput = intolerances.join(', ');
         const dietInput = $('select[id="diet"]').val();
         const numberInput = $('input[type="number"]').val();
-        getRecipeList(recipeQuery, dietInput, numberInput)
+        getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput)
     })
 }
 
