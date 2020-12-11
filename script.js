@@ -106,8 +106,13 @@ const searchURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/'
 const recipeEndpoint = 'recipes/search?'
 const wineEndpoint = 'food/wine/pairing?'
 
+function displayDrinkRec () {
+    
+}
+
 function getWineRec() {
     console.log(`getWineRec ran`)
+
 }
 
 function getCocktailRec() {
@@ -162,13 +167,14 @@ function formatQueryParams(params) {
 }
 
 
-function getRecipeList(recipeQuery, dietInput, numberInput) {
+
+
+function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput) {
     const recipeParams = {
         query: recipeQuery,
         diet: dietInput,
         number: numberInput
     }
-    console.log(recipeParams);
     const queryString = formatQueryParams(recipeParams);
     const url = searchURL + recipeEndpoint + queryString;
     console.log(url);
@@ -194,8 +200,12 @@ function getRecipeList(recipeQuery, dietInput, numberInput) {
 function handleFormSubmit() {
     $('.js-form').submit(event => {
         event.preventDefault();
-        const beverageType = $('input[name="drink"]:checked').attr('id')
         const recipeQuery = $('input#recipe-query').val();
+        let intolerances = []
+        $('input[name="intolerance"]:checked').each(function() {
+          intolerances.push(this.value);
+        });
+        intolerances = intolerances.join(', ');
         const dietInput = $('select[id="diet"]').val();
         const numberInput = $('input[type="number"]').val();
         /* const intolerances ?? const intolerances = [];
