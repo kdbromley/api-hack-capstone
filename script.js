@@ -122,7 +122,7 @@ function handleFormSubmit() {
         $('input[name="intolerance"]:checked').each(function() {
           intoleranceInput.push(this.value);
         });
-        intoleranceInput = intolerances.join(', ');
+        intoleranceInput = intoleranceInput.join(', ');
         const dietInput = $('select[id="diet"]').val();
         const numberInput = $('input[type="number"]').val();
         getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput)
