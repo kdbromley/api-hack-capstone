@@ -39,8 +39,8 @@
 				 <input type="radio" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
 			</fieldset>
 			<fieldset class="recipe-options">
-			    <label for="query">What are you feeling?</label>
-				 <input type="text" id="query" placeholder="i.e. pasta, cheesecake, rice pilaf" required>
+			    <label for="recipe-query">What are you feeling?</label>
+				 <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" required>
 				 <label for="diet">Dietary restrictions?</label>
 				 <select id="diet" name="diet">
 					 <option value=" "></option>
@@ -52,16 +52,18 @@
 				 </select>
 				 <fieldset class="intolerances-list">
 					 <legend>Any intolerances?</legend>
-					 <input type="checkbox" namevalue="egg"><label>Egg</label>
-					 <input type="checkbox" value="gluten"><label>Gluten</label>
-					 <input type="checkbox" value="dairy"><label>Dairy</label>
-					 <input type="checkbox" value="peanut"><label for="">Peanut</label>
-					 <input type="checkbox" value="seafood"><label for="">Seafood</label>
-					 <input type="checkbox" value="shellfish"><label for="">Shellfish</label>
-					 <input type="checkbox" value="soy"><label for="">Soy</label>
-					 <input type="checkbox" value="tree nut"><label for="">Tree nut</label>
-					 <input type="checkbox" value="wheat"><label for="">Wheat</label>
+					 <input type="checkbox" name="intolerance" value="egg"><label>Egg</label>
+					 <input type="checkbox" name="intolerance" value="gluten"><label>Gluten</label>
+					 <input type="checkbox" name="intolerance" value="dairy"><label>Dairy</label>
+					 <input type="checkbox" name="intolerance" value="peanut"><label for="">Peanut</label>
+					 <input type="checkbox" name="intolerance" value="seafood"><label for="">Seafood</label>
+					 <input type="checkbox" name="intolerance" value="shellfish"><label for="">Shellfish</label>
+					 <input type="checkbox" name="intolerance" value="soy"><label for="">Soy</label>
+					 <input type="checkbox" name="intolerance" value="tree nut"><label for="">Tree nut</label>
+					 <input type="checkbox" name="intolerance" value="wheat"><label for="">Wheat</label>
 				 </fieldset>
+				 <!-- not inclding this feature yet 
+
 				 <label for="cuisine">Got a cuisine in mind?</label>
 				 <select id="cuisine" name="cuisine">
 					 <option value=" "></option>
@@ -89,7 +91,10 @@
 					 <option value="eastern european">Eastern European</option>
 					 <option value="caribbean">Caribbean</option>
 					 <option value="latin american">Latin American</option>
-				 </select>
+				 </select>          
+				 
+				 -->
+				 
 				 <label>Number of Results:</label>
 				 <input type="number" size="5" placeholder="10" min="1" max="100">
 			 </fieldset>
