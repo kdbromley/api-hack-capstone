@@ -1,6 +1,6 @@
 'use strict';
 
-const responseJson = {
+const responseJsonR = {
     "results": [
         {
             "id": 667024,
@@ -100,58 +100,126 @@ const responseJson = {
     "processingTimeMs": 538,
     "expires": 1607920554934
 };
-
+const responseJsonDrink =
+    { drinks:  
+        [ { idDrink: '16986',
+            strDrink: 'Bible Belt',
+            strDrinkAlternate: null,
+            strDrinkES: null,
+            strDrinkDE: null,
+            strDrinkFR: null,
+            'strDrinkZH-HANS': null,
+            'strDrinkZH-HANT': null,
+            strTags: null,
+            strVideo: null,
+            strCategory: 'Other/Unknown',
+            strIBA: null,
+            strAlcoholic: 'Alcoholic',
+            strGlass: 'Highball glass',
+            strInstructions: 'Mix all ingredients, and pour over ice.',
+            strInstructionsES: null,
+            strInstructionsDE: 'Alle Zutaten mischen und über Eis gießen.',
+            strInstructionsFR: null,
+            'strInstructionsZH-HANS': null,
+            'strInstructionsZH-HANT': null,
+            strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/6bec6v1503563675.jpg',
+            strIngredient1: 'Southern Comfort',
+            strIngredient2: 'Triple sec',
+            strIngredient3: 'Lime',
+            strIngredient4: 'Sour mix',
+            strIngredient5: null,
+            strIngredient6: null,
+            strIngredient7: null,
+            strIngredient8: null,
+            strIngredient9: null,
+            strIngredient10: null,
+            strIngredient11: null,
+            strIngredient12: null,
+            strIngredient13: null,
+            strIngredient14: null,
+            strIngredient15: null,
+            strMeasure1: '2 oz ',
+            strMeasure2: '1/2 oz ',
+            strMeasure3: '2 wedges ',
+            strMeasure4: '2 oz ',
+            strMeasure5: null,
+            strMeasure6: null,
+            strMeasure7: null,
+            strMeasure8: null,
+            strMeasure9: null,
+            strMeasure10: null,
+            strMeasure11: null,
+            strMeasure12: null,
+            strMeasure13: null,
+            strMeasure14: null,
+            strMeasure15: null,
+            strImageSource: null,
+            strImageAttribution: null,
+            strCreativeCommonsConfirmed: 'No',
+            dateModified: '2017-08-24 09:34:35' } ] 
+        };
+            
 const apiKey = '';
-const searchURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/'
+const searchURLRecipe= 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/'
 const recipeEndpoint = 'recipes/search?'
-const wineEndpoint = 'food/wine/pairing?'
+const searchURLCocktail = 'https://the-cocktail-db.p.rapidapi.com/'
+const cocktailRandomEndpoint = 'random.php'
 
-function displayDrinkRec () {
-    
-}
 
-function getWineRec() {
-    console.log(`getWineRec ran`)
-
+function displayCocktailRec(responseJsonDrink) {
+    $('.js-recipe-list').next('section').empty()
+    const cocktailRec = generateCocktailRec(responseJsonDrink)
+    $('.js-recipe-list').next('section').append(cocktailRec)
 }
 
 function getCocktailRec() {
     console.log('getCocktailRec ran')
+    const url = searchURLCocktail + cocktailRandomEndpoint
+    console.log(url)
+  /* fetch(url, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "8ab972b41cmshe8e107ca90c05d2p1a2d95jsnfe7a217fe61a",
+		"x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
+	}
+    })
+    .then(response => { 
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(responseJson => console.log(responseJson))
+    .catch(err => {
+	console.error(err);
+    }); */
+    displayCocktailRec(responseJsonDrink)
 }
+
+
 
 function watchRecipeList() {
     $('.js-recipe-list').on('click', 'button', function(event) {
-      event.stopPropagation();
-      const bevType = $(this).attr('id');
-      console.log(bevType);
-      if (bevType === 'wine') {
-        getWineRec()
-        } else {
-          getCocktailRec(bevType);
-      }
-    });
-}
+        getCocktailRec();
+      });
+    }
 
 function displayDrinkOptions() {
-    return `<fieldset class="bev-options">
-                   <legend>Wine or cocktail?</legend>
-                   <button type="button" id="wine" name="drink"><label for="wine">Wine</label>
-                   <button type="button"id="cocktail" name="drink"><label for="cocktail">Cocktail</label>
-                   <button type="button" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
-              </fieldset>`
+    return `<section class="bev-options">
+                   <button type="button"id="cocktail" name="drink"><label for="cocktail">Cocktail?</label>
+            </section> `
 }
 
 
-function displayRecipeResults(responseJson) {
-    //console.log(responseJson);
+function displayRecipeResults(responseJsonR) {
+    //console.log(responseJsonR);
     $('.js-error-message').text('');
     $('.js-recipe-list').empty();
-    for (let i = 0; i < responseJson.results.length; i++) {
+    for (let i = 0; i < responseJsonR.results.length; i++) {
         $('.js-recipe-list').append(`
-        <li><h4><a href=${responseJson.results[i].url}>${responseJson.results[i].title}</a></h4>
-        <img href="${responseJson.results[i].image}" alt="${responseJson.results[i].title}">
-        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings</p>
-        <p>Source recipe:<a href=${responseJson.results[i].sourceUrl}>${responseJson.results[i].sourceUrl}</a></p>
+        <li><h4><a href=${responseJsonR.results[i].url}>${responseJsonR.results[i].title}</a></h4>
+        <img href="${responseJsonR.results[i].image}" alt="${responseJsonR.results[i].title}">
+        <p>Ready in ${responseJsonR.results[i].readyInMinutes} minutes! Makes ${responseJsonR.results[i].servings} servings</p>
+        <p>Source recipe:<a href=${responseJsonR.results[i].sourceUrl}>${responseJsonR.results[i].sourceUrl}</a></p>
         ${displayDrinkOptions()}
        </li>`)
     }
@@ -169,14 +237,14 @@ function formatQueryParams(params) {
 
 
 
-function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput) {
+function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput=10) {
     const recipeParams = {
         query: recipeQuery,
         diet: dietInput,
         number: numberInput
     }
     const queryString = formatQueryParams(recipeParams);
-    const url = searchURL + recipeEndpoint + queryString;
+    const url = searchURLRecipe + recipeEndpoint + queryString;
     console.log(url);
     /* fetch(url, {
 	"headers": {
@@ -193,7 +261,7 @@ function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput) {
             console.log(responseJson)
         })
         */
-        displayRecipeResults(responseJson);
+        displayRecipeResults(responseJsonR);
 }
 
 
@@ -208,13 +276,7 @@ function handleFormSubmit() {
         intolerances = intolerances.join(', ');
         const dietInput = $('select[id="diet"]').val();
         const numberInput = $('input[type="number"]').val();
-        /* const intolerances ?? const intolerances = [];
-        intolerances.push($('input[type="checkbox":checked').val()); */
-        // const cuisine = $('select[id="cuisine"').val();
         getRecipeList(recipeQuery, dietInput, numberInput)
-        //wine => pass vars to formatSpoon
-        //cocktail => pass vars to formatSpoonAndCocktail
-
     })
 }
 
