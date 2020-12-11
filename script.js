@@ -165,11 +165,18 @@ const recipeEndpoint = 'recipes/search?'
 const searchURLCocktail = 'https://the-cocktail-db.p.rapidapi.com/'
 const cocktailRandomEndpoint = 'random.php'
 
+function generateDrinkLink(responseJsonDrink) {
+    const liveURL = 'https://thecocktaildb.com/drink/'
+    const drinkId = responseJsonDrink.drinks[0].idDrink
+    const uriDrink = encodeURIComponent(responseJsonDrink.drinks[0].strDrink).replace(/%20/g, '-');
+    return liveURL + drinkId + '-' + uriDrink
+  }
 
 function displayCocktailRec(responseJsonDrink) {
-    $('.js-recipe-list').next('section').empty()
-    const cocktailRec = generateCocktailRec(responseJsonDrink)
-    $('.js-recipe-list').next('section').append(cocktailRec)
+    console.log('displayCocktailRec ran')
+    const drinkLink = generateDrinkLink(responseJsonDrink)
+    console.log(drinkLink)
+    $('.js-recipe-list').find('section.bev-options').html(`<p class="random-drink-result">Try a <a href=${drinkLink} target="_blank">${responseJsonDrink.drinks[0].strDrink}!</p>`)
 }
 
 function getCocktailRec() {
@@ -187,10 +194,10 @@ function getCocktailRec() {
       if (response.ok) {
         return response.json();
       }
+      throw new Error(response.statusText)
     })
-    .then(responseJson => console.log(responseJson))
-    .catch(err => {
-	console.error(err);
+    .then(responseJson => displayCocktailRec(responseJson))
+    .catch(err => { alert(err);
     }); */
     displayCocktailRec(responseJsonDrink)
 }
