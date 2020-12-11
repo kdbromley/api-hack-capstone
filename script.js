@@ -106,31 +106,39 @@ const searchURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/'
 const recipeEndpoint = 'recipes/search?'
 const wineEndpoint = 'food/wine/pairing?'
 
+function getWineRec() {
+    console.log(`getWineRec ran`)
+}
+
+function getCocktailRec() {
+    console.log('getCocktailRec ran')
+}
+
+function watchRecipeList() {
+    $('.js-recipe-list').on('click', 'button', function(event) {
+      event.stopPropagation();
+      const bevType = $(this).attr('id');
+      console.log(bevType);
+      if (bevType === 'wine') {
+        getWineRec()
+        } else {
+          getCocktailRec(bevType);
+      }
+    });
+}
 
 function displayDrinkOptions() {
     return `<fieldset class="bev-options">
                    <legend>Wine or cocktail?</legend>
-                   <button type="radio" id="wine" name="drink"><label for="wine">Wine</label>
-                   <button type="radio" id="cocktail" name="drink"><label for="cocktail">Cocktail</label>
-                   <button type="radio" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
+                   <button type="button" id="wine" name="drink"><label for="wine">Wine</label>
+                   <button type="button"id="cocktail" name="drink"><label for="cocktail">Cocktail</label>
+                   <button type="button" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
               </fieldset>`
-  }
+}
 
-
-/* function watchRecipeList() {
-    $('').on('click', '.class', event => {
-        const bevType = $(this).val();
-        if (bevType === wine) {
-            getWineRec()
-        } else {
-            getCocktailRec(bevType)
-        }
-
-    })
-} */
 
 function displayRecipeResults(responseJson) {
-    console.log(responseJson);
+    //console.log(responseJson);
     $('.js-error-message').text('');
     $('.js-recipe-list').empty();
     for (let i = 0; i < responseJson.results.length; i++) {
@@ -143,7 +151,9 @@ function displayRecipeResults(responseJson) {
        </li>`)
     }
     $('.js-results').removeClass('hidden');
+    watchRecipeList();
 }
+
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
@@ -153,7 +163,6 @@ function formatQueryParams(params) {
 
 
 function getRecipeList(recipeQuery, dietInput, numberInput) {
-    //const params []
     const recipeParams = {
         query: recipeQuery,
         diet: dietInput,
@@ -178,9 +187,9 @@ function getRecipeList(recipeQuery, dietInput, numberInput) {
             console.log(responseJson)
         })
         */
-       displayRecipeResults(responseJson);
-
+        displayRecipeResults(responseJson);
 }
+
 
 function handleFormSubmit() {
     $('.js-form').submit(event => {
@@ -195,7 +204,6 @@ function handleFormSubmit() {
         getRecipeList(recipeQuery, dietInput, numberInput)
         //wine => pass vars to formatSpoon
         //cocktail => pass vars to formatSpoonAndCocktail
-        console.log('handleFormSubmit ran');
 
     })
 }
