@@ -32,12 +32,6 @@
 
 
 		 <form class="js-form">
-			 <fieldset class="bev-options">
-				 <legend>Wine or cocktail?</legend>
-				 <input type="radio" id="wine" name="drink"><label for="wine">Wine</label>
-				 <input type="radio" id="cocktail" name="drink"><label for="cocktail">Cocktail</label>
-				 <input type="radio" id="non-alcoholic" name="drink"><label for="non-alcoholic">Non-alcoholic/Mocktail</label>
-			</fieldset>
 			<fieldset class="recipe-options">
 			    <label for="recipe-query">What are you feeling?</label>
 				 <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" required>
@@ -50,6 +44,9 @@
 					 <option value="lacto-vegetarian">Lacto-Vegetarian</option>
 					 <option value="ovo-vegetarian">Ovo-vegetarian</option>
 				 </select>
+
+				 <!-- not ready to include  these features yet 
+
 				 <fieldset class="intolerances-list">
 					 <legend>Any intolerances?</legend>
 					 <input type="checkbox" name="intolerance" value="egg"><label>Egg</label>
@@ -62,7 +59,7 @@
 					 <input type="checkbox" name="intolerance" value="tree nut"><label for="">Tree nut</label>
 					 <input type="checkbox" name="intolerance" value="wheat"><label for="">Wheat</label>
 				 </fieldset>
-				 <!-- not inclding this feature yet 
+
 
 				 <label for="cuisine">Got a cuisine in mind?</label>
 				 <select id="cuisine" name="cuisine">
@@ -92,11 +89,10 @@
 					 <option value="caribbean">Caribbean</option>
 					 <option value="latin american">Latin American</option>
 				 </select>          
-				 
 				 -->
-				 
-				 <label>Number of Results:</label>
-				 <input type="number" size="5" placeholder="10" min="1" max="100">
+
+				 <label for="results-number">Number of Results:</label>
+				 <input type="number" id="results-number" size="5" placeholder="10" min="1" max="100">
 			 </fieldset>
 			 <button type="submit">Search!</button>
 		 </form>
@@ -104,7 +100,7 @@
 
 		 <section class="results js-results hidden">
 			 <h3>Search results</h3>
-			 <ol>
+			 <ol class="js-recipe-list">
 				 <li>Example</li>
 			 </ol>
 
