@@ -1,7 +1,7 @@
 'use strict';
 
             
-const apiKey = '';
+const apiKey = 'd6b052fd42msh1e1c01d961ce133p15b713jsnb0961a325deb';
 const searchURLRecipe= 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/'
 const recipeEndpoint = 'recipes/search?'
 const searchURLCocktail = 'https://the-cocktail-db.p.rapidapi.com/'
