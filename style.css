@@ -1,3 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Montserrat&display=swap');
+
+/* 
+--charcoal: #3b4046ff;
+--middle-red: #dd917aff;
+--silver-pink: #b0a099ff;
+--beige: #f3f3dfff;
+--gold-metallic: #c7a632ff; */
+
+body { background-color: #3b4046ff;
+    color: #f3f3dfff; 
+    font-family: 'Montserrat', 'Lucida Sans', 'Open Sans', sans-serif;
+}
+
+main {
+    margin: 10%;
+}
+
+header {
+    background-color: #b0a099ff;
+    color: black;
+    font-variant: small-caps;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.credit-overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgba(48, 9, 155, 0.5);
+        width: 78%;
+        transition: .5s ease;
+        opacity:0;
+        color: rgb(251, 255, 0);
+        font-size: 25px;
+        font-weight: bolder;
+        padding: 20px;
+        text-align: center;
+}
+
+
+fieldset {
+    border: 1px solid #b0a099 ;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+label[for="diet"], label[for="recipe-query"] {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+
+
 .hidden {
     display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+
+.sub-header__title {
+    margin: 0;
+    padding: 0;
+}
+
+
+.group {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.item {
+    flex: 1;
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+
+
+fieldset.intolerances-list {
+    border: none;
 }

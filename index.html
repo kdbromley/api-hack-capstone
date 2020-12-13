@@ -12,64 +12,67 @@
 
  <body>
 	 <header>
-		 <h1>RECIPE AND DRINK SEARCH APP</h1>  <!-- placeholder, better name otw! -->
+		 <h1>Recipe and Drink Search</h1>  <!-- placeholder, better name otw! -->
 	 </header>
 
 	 <main>
-		 <section class="welcome">
-		 <h2>What should I do for dinner tonight?</h2>
-		 <p>Answer with a click.</p>
-		 <div class="hidden">  <!-- design containers to be filled during styling-->
-			 <img href="" alt="placeholder">
-		 </div>
-		 <div class="hidden">
-			 <img href="" alt="placeholder">
-		 </div>
-		 <div class="hidden">
-			 <img href="" alt="placeholder">
-		 </div>
+		 <section class="welcome group-row">
+		   <div class="item">
+		 	<h2 class="sub-header sub-header__title">What should I do for dinner tonight?</h2>
+		 	<p>Answer with a click.</p>
+		   </div>
+			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="240" height="160" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="item">
+			<div class="credit-overlay">cheeses' by _gee_ is licensed under CC BY 2.0</div>
 		 </section>
 
 
-		 <form class="js-form">
-			<fieldset class="recipe-options">
-				<legend>Let's find a recipe!</legend>
-			    <label for="recipe-query">What are you feeling?</label>
-				  <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" required>
-				
-				  <fieldset class="intolerances-list">
-					<legend>Any intolerances?</legend>
-					<input type="checkbox" name="intolerance" value="egg"><label>Egg</label>
-					<input type="checkbox" name="intolerance" value="gluten"><label>Gluten</label>
-					<input type="checkbox" name="intolerance" value="dairy"><label>Dairy</label>
-					<input type="checkbox" name="intolerance" value="peanut"><label for="">Peanut</label>
-					<input type="checkbox" name="intolerance" value="seafood"><label for="">Seafood</label>
-					<input type="checkbox" name="intolerance" value="shellfish"><label for="">Shellfish</label>
-					<input type="checkbox" name="intolerance" value="soy"><label for="">Soy</label>
-					<input type="checkbox" name="intolerance" value="tree nut"><label for="">Tree nut</label>
-					<input type="checkbox" name="intolerance" value="wheat"><label for="">Wheat</label>
+		 <form class="js-form group">
+			<div class="group">
+			 <fieldset>
+			  <legend>Let's find a recipe!</legend>
+				<div class="item item-desktop">
+			     <label for="recipe-query">What are you feeling?</label>
+				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25"required>
+				</div>
+
+				<fieldset class="intolerances-list item item-desktop">
+					<legend class="">Any intolerances?</legend>
+				  <ul>
+					<li><input type="checkbox" name="intolerance" id="egg" value="egg"><label for="egg">Egg</label></li>
+					<li><input type="checkbox" name="intolerance" id="gluten" value="gluten"><label for="gluten">Gluten</label></li>
+					<li><input type="checkbox" name="intolerance" id="dairy" value="dairy"><label for="dairy">Dairy</label></li>
+					<li><input type="checkbox" name="intolerance" id="peanut" value="peanut"><label for="peanut">Peanut</label></li>
+					<li><input type="checkbox" name="intolerance" id="seafood" value="seafood"><label for="seafood">Seafood</label></li>
+					<li><input type="checkbox" name="intolerance" id="shellfish" value="shellfish"><label for="shellfish">Shellfish</label></li>
+					<li><input type="checkbox" name="intolerance" id="soy" value="soy"><label for="soy">Soy</label></li>
+					<li><input type="checkbox" name="intolerance" id="tree nut" value="tree nut"><label for="tree nut">Tree nut</label></li>
+					<li><input type="checkbox" name="intolerance" id="wheat" value="wheat"><label for="wheat">Wheat</label></li>
+				  </ul>
 				</fieldset>
-				
-				<label for="diet">Dietary restrictions?</label>
-				<select id="diet" name="diet">
-				  <option value=" "></option>
-				  <option value="vegetarian">Vegetarian</option>
-				  <option value="pescetarian">Pescetarian</option>
-				  <option value="vegan">Vegan</option>
-				  <option value="lacto-vegetarian">Lacto-Vegetarian</option>
-				  <option value="ovo-vegetarian">Ovo-vegetarian</option>
-				</select>
-			</fieldset>
-				 <label for="results-number">Number of Results:</label>
+
+				<div class="item item-desktop">
+				 <label for="diet" class="hidden item">Dietary restrictions?</label>
+				 <select id="diet" name="diet" class="hidden">
+				   <option value=" "></option>
+				   <option value="vegetarian">Vegetarian</option>
+				   <option value="pescetarian">Pescetarian</option>
+				   <option value="vegan">Vegan</option>
+				   <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+				   <option value="ovo-vegetarian">Ovo-vegetarian</option>
+				 </select>
+				</div>
+			 </fieldset>
+			</div>
+				 <label for="results-number item">Number of Results:</label>
 				 <input type="number" id="results-number" size="5" placeholder="10" min="1" max="100">
 
 			 <button type="submit">Search!</button>
 		 </form>
 		 
 
-		 <section class="results js-results hidden">
+		 <section class="results js-results hidden group">
 			 <h3>Search results</h3>
-			 <ol class="js-recipe-list">
+			 <ol class="js-recipe-list group item">
 				 <li>Example</li>
 			 </ol>
 
