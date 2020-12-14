@@ -32,10 +32,10 @@
 			<div class="group">
 				<div class="item item-desktop">
 			     <label for="recipe-query" class="large">What are you feeling?</label>
-				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25"required>
+				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25" oninput="handleFormProgress()" required>
 				</div>
 
-				<fieldset class="item item-desktop">
+				<fieldset class="item item-desktop hidden">
 					<legend class="large">Any allergies/intolerances?</legend>
 				  <ul>
 					<li><input type="checkbox" name="intolerance" id="egg" value="egg"><label for="egg">Egg</label></li>
@@ -50,8 +50,8 @@
 				  </ul>
 				</fieldset>
 
-				<div class="item item-desktop">
-				 <label for="diet" >Dietary restrictions?</label>
+				<div id="diet" class="item item-desktop hidden">
+				 <label for="diet">Dietary restrictions?</label>
 				 <select id="diet" name="diet">
 				   <option value=" "></option>
 				   <option value="vegetarian">Vegetarian</option>
@@ -70,7 +70,7 @@
 		 </form>
 		 
 
-		 <section class="results js-results hidden group">
+		 <section class="results js-results group invisible">
 			 <h3>Search results</h3>
 			 <ol class="js-recipe-list group item-desktop">
 				 <li>Example</li>

@@ -18,7 +18,10 @@ function displayCocktailRec(responseJson) {
     console.log(responseJson)
     const drinkLink = generateDrinkLink(responseJson)
     console.log(drinkLink)
-    $('.js-recipe-list').find('section.bev-options').html(`<p class="random-drink-result">Try a <a href=${drinkLink} target="_blank">${responseJson.drinks[0].strDrink}!</p>`)
+    $('.js-recipe-list').find('section.bev-options').html(`
+    <div class="item">
+    <p class="random-drink-result">Try a <a href=${drinkLink} target="_blank">${responseJson.drinks[0].strDrink}!</p>
+    </div>`)
 }
 
 function getCocktailRec() {
@@ -53,8 +56,8 @@ function watchRecipeList() {
     }
 
 function displayDrinkOptions() {
-    return `<section class="bev-options">
-                   <button type="button"id="cocktail" name="drink"><label for="cocktail">Cocktail?</label>
+    return `<section class="bev-options item-right">
+                   <button type="button" id="cocktail" name="drink" class="$><label for="cocktail">Cocktail?</label>
             </section> `
 }
 
@@ -72,7 +75,7 @@ function displayRecipeResults(responseJson) {
         ${displayDrinkOptions()}
        </li>`)
     }
-    $('.js-results').removeClass('hidden');
+    $('.js-results').removeClass('invisible');
     watchRecipeList();
 }
 
@@ -127,6 +130,11 @@ function handleFormSubmit() {
         const numberInput = $('input[type="number"]').val();
         getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput)
     })
+}
+
+function handleFormProgress() {
+        $('fieldset').removeClass('hidden');
+        $('div#diet').removeClass('hidden');
 }
 
 $(handleFormSubmit);
