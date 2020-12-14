@@ -17,26 +17,26 @@
 
 	 <main>
 		 <section class="welcome group-row">
-		   <div class="item">
-		 	<h2 class="sub-header sub-header__title">What should I do for dinner tonight?</h2>
+		   <div class="item intro--align">
+		 	<h2>What should I have tonight?</h2>
 		 	<p>Answer with a click.</p>
 		   </div>
-			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="240" height="160" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="item">
-			<div class="credit-overlay">cheeses' by _gee_ is licensed under CC BY 2.0</div>
+		   <div class="img__container">
+			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="240" height="160" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="img__intro item">
+			<div class="credit-overlay"><a href="https://www.flickr.com/photos/32426344@N00/4090407169">'cheeses'</a> by _gee_ is licensed under CC BY 2.0</div>
+			</div>
 		 </section>
 
-
-		 <form class="js-form group">
+		 <h3 class="h3--no-bottom">Let's find a recipe!</h3>
+		 <form class="js-form">
 			<div class="group">
-			 <fieldset>
-			  <legend>Let's find a recipe!</legend>
 				<div class="item item-desktop">
-			     <label for="recipe-query">What are you feeling?</label>
+			     <label for="recipe-query" class="large">What are you feeling?</label>
 				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25"required>
 				</div>
 
-				<fieldset class="intolerances-list item item-desktop">
-					<legend class="">Any intolerances?</legend>
+				<fieldset class="item item-desktop">
+					<legend class="large">Any allergies/intolerances?</legend>
 				  <ul>
 					<li><input type="checkbox" name="intolerance" id="egg" value="egg"><label for="egg">Egg</label></li>
 					<li><input type="checkbox" name="intolerance" id="gluten" value="gluten"><label for="gluten">Gluten</label></li>
@@ -51,8 +51,8 @@
 				</fieldset>
 
 				<div class="item item-desktop">
-				 <label for="diet" class="hidden item">Dietary restrictions?</label>
-				 <select id="diet" name="diet" class="hidden">
+				 <label for="diet" >Dietary restrictions?</label>
+				 <select id="diet" name="diet">
 				   <option value=" "></option>
 				   <option value="vegetarian">Vegetarian</option>
 				   <option value="pescetarian">Pescetarian</option>
@@ -61,18 +61,18 @@
 				   <option value="ovo-vegetarian">Ovo-vegetarian</option>
 				 </select>
 				</div>
-			 </fieldset>
-			</div>
-				 <label for="results-number item">Number of Results:</label>
+				<div class="item item-desktop">
+				 <label for="results-number">Number of Results:</label>
 				 <input type="number" id="results-number" size="5" placeholder="10" min="1" max="100">
-
-			 <button type="submit">Search!</button>
+				</div>
+			</div>
+			 <button type="submit" class="button__submit">Search!</button>
 		 </form>
 		 
 
 		 <section class="results js-results hidden group">
 			 <h3>Search results</h3>
-			 <ol class="js-recipe-list group item">
+			 <ol class="js-recipe-list group item-desktop">
 				 <li>Example</li>
 			 </ol>
 
