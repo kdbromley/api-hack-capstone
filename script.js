@@ -17,17 +17,17 @@ function generateDrinkLink(responseJson) {
 function displayCocktailRec(responseJson) {
     console.log(responseJson)
     const drinkLink = generateDrinkLink(responseJson)
-    console.log(drinkLink)
-    $('.js-recipe-list').find('section.bev-options').html(`
-    <div class="item">
-    <p class="random-drink-result">Try a <a href=${drinkLink} target="_blank">${responseJson.drinks[0].strDrink}!</p>
+    $('.js-recipe-list').find('div.recipe-list__group').append(`
+    <div class="item__result__drink">
+    <img src="${responseJson.drinks[0].strDrinkThumb}" alt="${responseJson.drinks[0].strDrink}" class="result__image item__result__image">
+    <p>Try a <a href=${drinkLink} target="_blank">${responseJson.drinks[0].strDrink}!</p>
     </div>`)
+    $('.js-recipe-list').find('button#cocktail').remove();
 }
 
 function getCocktailRec() {
     console.log('getCocktailRec ran')
-    const url = searchURLCocktail + cocktailRandomEndpoint
-    console.log(url)
+    const url = searchURLCocktail + cocktailRandomEndpoint;
     fetch(url, {
 	    "method": "GET",
 	    "headers": {
@@ -44,35 +44,34 @@ function getCocktailRec() {
     .then(responseJson => displayCocktailRec(responseJson))
     .catch(err => { alert(`Uh oh! An error occured: ${err.message}`);
     });
-
 }
-
 
 
 function watchRecipeList() {
     $('.js-recipe-list').on('click', 'button', function(event) {
+       $(this).closest('li').nextAll().remove()
+       $(this).closest('li').prevAll().remove();
         getCocktailRec();
       });
     }
-
-function displayDrinkOptions() {
-    return `<section class="bev-options item-right">
-                   <button type="button" id="cocktail" name="drink" class="$><label for="cocktail">Cocktail?</label>
-            </section> `
-}
 
 
 function displayRecipeResults(responseJson) {
     console.log(responseJson);
     $('.js-error-message').text('');
     $('.js-recipe-list').empty();
+    //getImage(responseJson)
     for (let i = 0; i < responseJson.results.length; i++) {
         $('.js-recipe-list').append(`
-        <li><h4><a href=${responseJson.results[i].url}>${responseJson.results[i].title}</a></h4>
-        <img href="${responseJson.results[i].image}" alt="${responseJson.results[i].title}">
-        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings</p>
-        <p>Source recipe:<a href=${responseJson.results[i].sourceUrl}>${responseJson.results[i].sourceUrl}</a></p>
-        ${displayDrinkOptions()}
+       <li><h4 class"recipe__title--inline"><a href=${responseJson.results[i].sourceUrl} target="_blank" >${responseJson.results[i].title}</a></h4>
+       <button type="button" id="cocktail" name="cocktail?" class="button--inline">Cocktail?</button> 
+       <div class="recipe-list__group">
+        <div class="item__result__recipe">
+        <img src="${responseJson.baseUri}${responseJson.results[i].image}" alt="${responseJson.results[i].title}" class="result__image item__result__image">
+        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings. <br/> 
+        Source recipe: <a href="${responseJson.results[i].sourceUrl}">${responseJson.results[i].sourceUrl}</a></p>
+        </div>
+        </div>
        </li>`)
     }
     $('.js-results').removeClass('invisible');
@@ -85,7 +84,6 @@ function formatQueryParams(params) {
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`); 
     return queryItems.join('&');
 }
-
 
 
 
@@ -134,7 +132,9 @@ function handleFormSubmit() {
 
 function handleFormProgress() {
         $('fieldset').removeClass('hidden');
-        $('div#diet').removeClass('hidden');
+        $('div#diet-select').removeClass('hidden');
+        $('div#cuisine-select').removeClass('hidden');
+        $('label[for="results-number"]').removeClass('invisible');
 }
 
 $(handleFormSubmit);

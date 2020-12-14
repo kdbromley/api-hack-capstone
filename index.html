@@ -16,27 +16,27 @@
 	 </header>
 
 	 <main>
-		 <section class="welcome group-row">
+		 <section class="welcome intro__group">
 		   <div class="item intro--align">
 		 	<h2>What should I have tonight?</h2>
 		 	<p>Answer with a click.</p>
 		   </div>
-		   <div class="img__container">
-			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="240" height="160" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="img__intro item">
+		   <div class="intro__img__container">
+			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="480" height="320" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="intro__img item-double">
 			<div class="credit-overlay"><a href="https://www.flickr.com/photos/32426344@N00/4090407169">'cheeses'</a> by _gee_ is licensed under CC BY 2.0</div>
 			</div>
 		 </section>
 
-		 <h3 class="h3--no-bottom">Let's find a recipe!</h3>
+		 <h3 class="form__title">Let's find a recipe!</h3>
 		 <form class="js-form">
-			<div class="group">
-				<div class="item item-desktop">
-			     <label for="recipe-query" class="large">What are you feeling?</label>
+			<div class="form__group">
+				<div class="item">
+			     <label for="recipe-query" class="label">What are you feeling?</label>
 				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25" oninput="handleFormProgress()" required>
 				</div>
 
-				<fieldset class="item item-desktop hidden">
-					<legend class="large">Any allergies/intolerances?</legend>
+				<fieldset class="item-double hidden">
+					<legend class="large label">Any allergies/intolerances?</legend>
 				  <ul>
 					<li><input type="checkbox" name="intolerance" id="egg" value="egg"><label for="egg">Egg</label></li>
 					<li><input type="checkbox" name="intolerance" id="gluten" value="gluten"><label for="gluten">Gluten</label></li>
@@ -50,8 +50,8 @@
 				  </ul>
 				</fieldset>
 
-				<div id="diet" class="item item-desktop hidden">
-				 <label for="diet">Dietary restrictions?</label>
+				<div id="diet-select" class="item hidden">
+				 <label for="diet" class="label">Dietary restrictions?</label>
 				 <select id="diet" name="diet">
 				   <option value=" "></option>
 				   <option value="vegetarian">Vegetarian</option>
@@ -61,24 +61,60 @@
 				   <option value="ovo-vegetarian">Ovo-vegetarian</option>
 				 </select>
 				</div>
-				<div class="item item-desktop">
-				 <label for="results-number">Number of Results:</label>
-				 <input type="number" id="results-number" size="5" placeholder="10" min="1" max="100">
+				<div id="cuisine-select" class="item hidden">
+				<label for="cuisine" class="label">Got a cuisine in mind?</label>
+				 <select id="cuisine" name="cuisine">
+					 <option value=" "></option>
+					 <option value="african">African</option>
+					 <option value="italian">Italian</option>
+					 <option value="french">French</option>
+					 <option value="chinese">Chinese</option>
+					 <option value="japanese">Japanese</option>
+					 <option value="korean">Korean</option>
+					 <option value="vietnamese">Vietnamese</option>
+					 <option value="thai">Thai</option>
+					 <option value="indian">Indian</option>
+					 <option value="british">British</option>
+					 <option value="irish">Irish</option>
+					 <option value="mexican">Mexican</option>
+					 <option value="spanish">Spanish</option>
+					 <option value="middle eastern">Middle Eastern</option>
+					 <option value="jewish">Jewish</option>
+					 <option value="american">American</option>
+					 <option value="cajun">Cajun</option>
+					 <option value="southern">Southern</option>
+					 <option value="greek">Greek</option>
+					 <option value="german">German</option>
+					 <option value="nordic">Nordic</option>
+					 <option value="eastern european">Eastern European</option>
+					 <option value="caribbean">Caribbean</option>
+					 <option value="latin american">Latin American</option>
+				 </select>
 				</div>
 			</div>
-			 <button type="submit" class="button__submit">Search!</button>
-		 </form>
+			<label for="results-number" class="label--noblock invisible">Results:
+				<input type="number" id="results-number" size="5" placeholder="10" min="1" max="100">
+			</label>
+			<button type="submit" class="button__submit">Search!</button>
+		</form>
 		 
 
-		 <section class="results js-results group invisible">
-			 <h3>Search results</h3>
-			 <ol class="js-recipe-list group item-desktop">
+		 <section class="results__container js-results invisible">
+			 <h3 class="results__title">Search Results</h3>
+			 <ol class="js-recipe-list results__list">
 				 <li>Example</li>
 			 </ol>
 
 		 </section>
 	 
 		 
+		 <footer>
+			 <section class="group">
+				 <h4 class="item">© k.d. Bromley 2020</h4>
+				 <h4 class="item"><span>&#1422;</span>Recipes provided by <a href="https://spoonacular.com/food-api" target="_blank">Spoonacular Recipe - Food - Nutrition API</a><br/>
+					<span>&#1422;</span>Cocktails provided by <a href="https://www.thecocktaildb.com/api.php" target="_blank">CocktailDB API</a></h4>
+			 </section>
+		 </footer>
 		
 		
 	</main>
