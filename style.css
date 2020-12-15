@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Montserrat&display=swap');
 
-/* 
---charcoal: #3b4046ff;
---middle-red: #dd917aff;
---silver-pink: #b0a099ff;
---beige: #f3f3dfff;
---gold-metallic: #c7a632ff; */
 /* Page */
 
 body { background-color: #3b4046;
@@ -305,11 +299,13 @@ a:active { color: #c7a632ff; }
         flex-grow: 0;
         flex-shrink: 2;
         flex-basis: 0;
+        max-width: 100%;
     }
 
     .result__drink--item {
         flex-grow: 0.5;
         flex-shrink: 3;
+        max-width: 100%;
     }
     
 

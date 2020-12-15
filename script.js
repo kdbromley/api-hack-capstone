@@ -59,7 +59,6 @@ function displayRecipeResults(responseJson) {
     console.log(responseJson);
     $('.js-error-message').remove();
     $('.js-recipe-list').empty();
-    //getImage(responseJson)
     if (responseJson.totalResults == 0) {
         $('.js-recipe-list').append(`<h4 class="js-error-message" style="color: #dd917aff">Uh oh, no results for these search terms. Try broadening your search.</h4>`)
     }
@@ -69,8 +68,8 @@ function displayRecipeResults(responseJson) {
        <div class="result__li__group">
         <div class="result__recipe--item">
         <img src="${responseJson.baseUri}${responseJson.results[i].image}" alt="${responseJson.results[i].title}" class="result__image result__image--item">
-        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings. <br/> 
-        Source recipe: <a href="${responseJson.results[i].sourceUrl}">${responseJson.results[i].sourceUrl}</a></p>
+        <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings.</p>
+        <p>Source recipe: <a href="${responseJson.results[i].sourceUrl}">${responseJson.results[i].sourceUrl}</a></p>
         </div>
         </div>
         <button type="button" id="cocktail" name="cocktail?" class="result__drink__button">Cocktail?</button> 
@@ -98,7 +97,6 @@ function getRecipeList(recipeQuery, intoleranceInput, dietInput, cuisineInput, n
     }
     const queryString = formatQueryParams(recipeParams);
     const url = searchURLRecipe + recipeEndpoint + queryString;
-    console.log(url);
     fetch(url, {
 	    "headers": {
 		    "x-rapidapi-key": apiKey,
@@ -133,7 +131,8 @@ function handleFormSubmit() {
     })
 }
 
-function handleFormProgress() {
+//html inline function, reveal rest of form upon input
+function handleFormProgress() {  
         $('fieldset').removeClass('hidden');
         $('div#diet-select').removeClass('hidden');
         $('div#cuisine-select').removeClass('hidden');
