@@ -3,7 +3,8 @@
 
 /* Page */
 
-body { background-color: #3b4046;
+body { 
+    background-color: #3b4046;
     color: #f3f3dfff; 
     font-family: 'Montserrat', 'Raleway', 'Open Sans', sans-serif;
 }
@@ -163,18 +164,16 @@ p { font-size: 18px; }
 
 .recipe-list__group {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
-.result__recipe--item {
+.result__recipe--item, .result__drink--item {
     flex: 1;
 }
 
-.result__drink--item {
-    flex: 1;
-}
 
 .result__image {
     height: 200px;

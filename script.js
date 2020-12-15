@@ -69,7 +69,7 @@ function displayRecipeResults(responseJson) {
         <div class="result__recipe--item">
         <img src="${responseJson.baseUri}${responseJson.results[i].image}" alt="${responseJson.results[i].title}" class="result__image result__image--item">
         <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings.</p>
-        <p>Source recipe: <a href="${responseJson.results[i].sourceUrl}">${responseJson.results[i].sourceUrl}</a></p>
+        <p><a href="${responseJson.results[i].sourceUrl}">Source Recipe</a></p>
         </div>
         </div>
         <button type="button" id="cocktail" name="cocktail?" class="result__drink__button">Cocktail?</button> 
