@@ -1,7 +1,7 @@
 # Dinner Time - Recipe and Drink Search
 I've built a web app that integrates with Spoontacular Recipe - Food - Nutrition API and the CocktailDB API to provide a users recipe ideas and drink suggestions. Make planning dinners at home a little more interesting!
 
-Live App: https://kdbromley.github.io/api-hack-capstone/
+Live App: https://kdbromley.github.io/dinner-time-app/
 
 ![screenshot of app on iphone](/images/iphone-screenshot.png?raw=true "Optional Title")
 
