@@ -15,18 +15,17 @@ function generateDrinkLink(responseJson) {
   }
 
 function displayCocktailRec(responseJson) {
-    console.log(responseJson)
-    const drinkLink = generateDrinkLink(responseJson)
-    $('.js-recipe-list').find('div.recipe-list__group').append(`
-    <div class="item__result__drink">
-    <img src="${responseJson.drinks[0].strDrinkThumb}" alt="${responseJson.drinks[0].strDrink}" class="result__image item__result__image">
+    console.log(responseJson);
+    const drinkLink = generateDrinkLink(responseJson);
+    $('.js-recipe-list').find('div.result__li__group').append(`
+    <div class="result__drink--item">
+    <img src="${responseJson.drinks[0].strDrinkThumb}" alt="${responseJson.drinks[0].strDrink}" class="result__image result__image--item">
     <p>Try a <a href=${drinkLink} target="_blank">${responseJson.drinks[0].strDrink}!</p>
     </div>`)
     $('.js-recipe-list').find('button#cocktail').remove();
 }
 
 function getCocktailRec() {
-    console.log('getCocktailRec ran')
     const url = searchURLCocktail + cocktailRandomEndpoint;
     fetch(url, {
 	    "method": "GET",
@@ -49,7 +48,7 @@ function getCocktailRec() {
 
 function watchRecipeList() {
     $('.js-recipe-list').on('click', 'button', function(event) {
-       $(this).closest('li').nextAll().remove()
+       $(this).closest('li').nextAll().remove();
        $(this).closest('li').prevAll().remove();
         getCocktailRec();
       });
@@ -58,20 +57,23 @@ function watchRecipeList() {
 
 function displayRecipeResults(responseJson) {
     console.log(responseJson);
-    $('.js-error-message').text('');
+    $('.js-error-message').remove();
     $('.js-recipe-list').empty();
     //getImage(responseJson)
+    if (responseJson.totalResults == 0) {
+        $('.js-recipe-list').append(`<h4 class="js-error-message" style="color: #dd917aff">Uh oh, no results for these search terms. Try broadening your search.</h4>`)
+    }
     for (let i = 0; i < responseJson.results.length; i++) {
         $('.js-recipe-list').append(`
-       <li><h4 class"recipe__title--inline"><a href=${responseJson.results[i].sourceUrl} target="_blank" >${responseJson.results[i].title}</a></h4>
-       <button type="button" id="cocktail" name="cocktail?" class="button--inline">Cocktail?</button> 
-       <div class="recipe-list__group">
-        <div class="item__result__recipe">
-        <img src="${responseJson.baseUri}${responseJson.results[i].image}" alt="${responseJson.results[i].title}" class="result__image item__result__image">
+       <li><h4><a href=${responseJson.results[i].sourceUrl} target="_blank" >${responseJson.results[i].title}</a></h4>
+       <div class="result__li__group">
+        <div class="result__recipe--item">
+        <img src="${responseJson.baseUri}${responseJson.results[i].image}" alt="${responseJson.results[i].title}" class="result__image result__image--item">
         <p>Ready in ${responseJson.results[i].readyInMinutes} minutes! Makes ${responseJson.results[i].servings} servings. <br/> 
         Source recipe: <a href="${responseJson.results[i].sourceUrl}">${responseJson.results[i].sourceUrl}</a></p>
         </div>
         </div>
+        <button type="button" id="cocktail" name="cocktail?" class="result__drink__button">Cocktail?</button> 
        </li>`)
     }
     $('.js-results').removeClass('invisible');
@@ -86,12 +88,12 @@ function formatQueryParams(params) {
 }
 
 
-
-function getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput=10) {
+function getRecipeList(recipeQuery, intoleranceInput, dietInput, cuisineInput, numberInput=10) {
     const recipeParams = {
         query: recipeQuery,
         intolerances: intoleranceInput,
         diet: dietInput,
+        cuisine: cuisineInput,
         number: numberInput
     }
     const queryString = formatQueryParams(recipeParams);
@@ -119,14 +121,15 @@ function handleFormSubmit() {
     $('.js-form').submit(event => {
         event.preventDefault();
         const recipeQuery = $('input#recipe-query').val();
-        let intoleranceInput = []
+        let intoleranceInput = [];
         $('input[name="intolerance"]:checked').each(function() {
           intoleranceInput.push(this.value);
         });
         intoleranceInput = intoleranceInput.join(', ');
         const dietInput = $('select[id="diet"]').val();
+        const cuisineInput = $('select[id="cuisine"]').val();
         const numberInput = $('input[type="number"]').val();
-        getRecipeList(recipeQuery, intoleranceInput, dietInput, numberInput)
+        getRecipeList(recipeQuery, intoleranceInput, dietInput, cuisineInput, numberInput);
     })
 }
 

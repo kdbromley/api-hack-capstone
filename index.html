@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
  <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">   <!-- viewport for mobile first, control page scaling when rendering -->
@@ -22,8 +21,8 @@
 		 	<p>Answer with a click.</p>
 		   </div>
 		   <div class="intro__img__container">
-			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="480" height="320" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="intro__img item-double">
-			<div class="credit-overlay"><a href="https://www.flickr.com/photos/32426344@N00/4090407169">'cheeses'</a> by _gee_ is licensed under CC BY 2.0</div>
+			<img src="https://live.staticflickr.com/2691/4090407169_5d9f3ff593_m.jpg" width="480" height="320" title="'cheeses' by _gee_ is licensed under CC BY 2.0" alt="cheeses" class="intro__img intro__img--item">
+			<div class="img__credit-overlay"><a href="https://www.flickr.com/photos/32426344@N00/4090407169" style="color:#3B4046">'cheeses'</a> by _gee_ is licensed under CC BY 2.0</div>
 			</div>
 		 </section>
 
@@ -35,7 +34,7 @@
 				   <input type="text" id="recipe-query" placeholder="i.e. pasta, cheesecake, rice pilaf" size="25" oninput="handleFormProgress()" required>
 				</div>
 
-				<fieldset class="item-double hidden">
+				<fieldset class="item hidden">
 					<legend class="large label">Any allergies/intolerances?</legend>
 				  <ul>
 					<li><input type="checkbox" name="intolerance" id="egg" value="egg"><label for="egg">Egg</label></li>
@@ -100,7 +99,7 @@
 		 
 
 		 <section class="results__container js-results invisible">
-			 <h3 class="results__title">Search Results</h3>
+			 <h3 class="results__container__title">Search Results</h3>
 			 <ol class="js-recipe-list results__list">
 				 <li>Example</li>
 			 </ol>
@@ -109,10 +108,10 @@
 	 
 		 
 		 <footer>
-			 <section class="group">
+			 <section class="footer__group">
 				 <h4 class="item">© k.d. Bromley 2020</h4>
-				 <h4 class="item"><span>&#1422;</span>Recipes provided by <a href="https://spoonacular.com/food-api" target="_blank">Spoonacular Recipe - Food - Nutrition API</a><br/>
-					<span>&#1422;</span>Cocktails provided by <a href="https://www.thecocktaildb.com/api.php" target="_blank">CocktailDB API</a></h4>
+				 <h4 class="item"><span>&#1422;</span> Recipes provided by <a href="https://spoonacular.com/food-api" target="_blank">Spoonacular Recipe - Food - Nutrition API</a><br/>
+					<span>&#1422;</span> Cocktails provided by <a href="https://www.thecocktaildb.com/api.php" target="_blank">CocktailDB API</a></h4>
 			 </section>
 		 </footer>
 		
