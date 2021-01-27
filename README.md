@@ -23,5 +23,7 @@ Live App: https://kdbromley.github.io/dinner-time-app/
 API hack capstone project for Thinkful, in which I build, design, and implement a web app that integrates with one or more 3rd party API(s). 
 Intended as a capstone project to demonstrate my skills in HTML, CSS, and JavaScript thus far. 
 
+ **Please note** that because I'm still learning server-side skills, I have a (now non-valid) API key in the source code. The API key was included to allow my grading of my live app up on project submission, and afterwards I deactivated the API key for obvious security reasons. The screenshots included demonstrate the functionality of the app. 
+
 ## Stack
-I'm using JavaScript/jQuery, HTML, and CSS. 
+I'm using JavaScript/jQuery, HTML, and CSS.
